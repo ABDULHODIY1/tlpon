@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% if q %}
+        <h1>mana{{q}}</h1>
+{%else%}
+{%for Cinemas in Cinemas %}
+
+
+<img src="{{Cinemas.img.url}}" alt="" width="300" height="300">
+<p>{{Cinemas.date}}</p>
+<p>author:{{Cinemas.author}}</p>
+<h1>{{Cinemas.title}}</h1>
+
+<p>{{Cinemas.text|truncatewords:"10"}}</p>
+<div class="cantainer_like"></div>
+<form action="/" method="post">{%csrf_token%}
+
+        <button style=" background: none; border: none;"><i class="bi bi-heart" id="like" width="55" height="55"></i>
+        </button>
+
+</form>
+</div>
+
+{%endfor%}
+{%endif%}
+{%endblock content%}
+<style>
+        .cantainer_like button {
+                background: none;
+                border: none;
+        }
+
+        .cantainer_like {
+                width: 100;
+                height: auto;
+                padding: 10px 10px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-bottom: 10px;
+        }
+</style>
